@@ -1,4 +1,4 @@
-package Demo.Corruption.Version2;
+package Demo.Corruption;
 
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
