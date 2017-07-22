@@ -62,20 +62,29 @@ public class Congress implements Observable {
 
     @Override
     public void notifyObservers() {
-        for (Observer observer : spies) {
+
+        Iterator<Observer> iter = spies.iterator();
+
+        while (iter.hasNext()) {
+
+            Observer observer = iter.next();
+
             int randomNum = ThreadLocalRandom.current().nextInt(1, 3);
+
             switch(randomNum) {
                 case 1:
                     observer.updateState(aquisition, methods, sources);
                     break;
                 case 2:
-                    observer.updateState(null, null, null);
+                    iter.remove();
                     break;
                 default:
                     observer.updateState(null, null, null);
                     break;
             }
         }
+
+
     }
 
     public void setData(String aquisition, String methods, String sources) {

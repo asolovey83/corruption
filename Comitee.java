@@ -1,6 +1,7 @@
 package Demo.Corruption;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -29,20 +30,23 @@ public class Comitee implements Observer {
     @Override
     public void updateState(String aquisition, String methods, String sources)
     {
-        for (int i = 0; i < spyNumber; i++)
-        {
+        int i = 0;
+        while (i < congress.getSpies().size()) {
             spies.add((Spy)congress.getSpies().get(i));
+            i++;
         }
     }
 
-    public void display()    {
+    public void display() {
+        int i = 0;
+        while (i < spies.size()) {
 
-        for (int i = 0; i < spyNumber; i++) {
             System.out.println("Данные про привлечение новых членов: " + spies.get(i).getAquisition());
             System.out.println("Данные про методы отмывания денег: " + spies.get(i).getMethods());
             System.out.println("Данные про источники взяток: " + spies.get(i).getSources());
             System.out.println();
+            i++;
         }
-
     }
+
 }
