@@ -5,3 +5,9 @@ ToDo: Implement pattern Observer for 10 Spies and Comitee with displaying by the
 07/12
 Done: Implemented pattern observer with Spies as a middle tier and displaying with Comitee
 To Do: Implement observation with 10 spies and monitoring system for spies.
+
+07/22:
+Done: Implemented with crunches
+To Do: Figure out how to get rid of arguments in Comittes updatestate
+       Create new branch and play with it.
+       Maybe include display in update state

@@ -1,4 +1,4 @@
-package Demo.Corruption;
+package Demo.Corruption.Version2;
 
 /**
  * Created by asolo on 7/7/2017.

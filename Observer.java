@@ -1,4 +1,4 @@
-package Demo.Corruption;
+package Demo.Corruption.Version2;
 
 /**
  * Created by asolo on 5/29/2017.
@@ -6,4 +6,5 @@ package Demo.Corruption;
 public interface Observer {
 
     void updateState(String aquisition, String methods, String sources);
+
 }

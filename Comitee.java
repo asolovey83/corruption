@@ -1,42 +1,48 @@
-package Demo.Corruption;
+package Demo.Corruption.Version2;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by asolo on 5/29/2017.
  */
 public class Comitee implements Observer {
 
-    private Spy spy;
+    private List<Spy> spies;
+    public Congress congress;
+    int spyNumber;
 
-    public Spy getSpy() {
-        return spy;
-    }
 
-    public void setSpy(Spy spy) {
-        this.spy = spy;
-    }
-
-    public Comitee(Spy spy)
+    public Comitee (Congress congress, int spyNumber)
     {
-        this.spy = spy;
-        spy.registerObserver(this);
+        this.congress = congress;
+        this.spyNumber = spyNumber;
+        spies = new ArrayList<>();
+
+        for (int i = 0; i < spyNumber; i++) {
+            Spy spy = new Spy(congress);
+            spy.registerObserver(this);
+            congress.getSpies().add(spy);
+        }
     }
 
     @Override
     public void updateState(String aquisition, String methods, String sources)
     {
-        this.getSpy().getCongress().setAquisition(aquisition);
-        this.getSpy().getCongress().setMethods(methods);
-        this.getSpy().getCongress().setSources(sources);
-        this.display();
+        for (int i = 0; i < spyNumber; i++)
+        {
+            spies.add((Spy)congress.getSpies().get(i));
+        }
     }
 
-    public void display()
-    {
-        System.out.println("Данные про привлечение новых членов: " + this.getSpy().getCongress().getAquisition());
-        System.out.println("Данные про методы отмывания денег: " + this.getSpy().getCongress().getMethods());
-        System.out.println("Данные про источники взяток: " + this.getSpy().getCongress().getSources());
+    public void display()    {
+
+        for (int i = 0; i < spyNumber; i++) {
+            System.out.println("Данные про привлечение новых членов: " + spies.get(i).getAquisition());
+            System.out.println("Данные про методы отмывания денег: " + spies.get(i).getMethods());
+            System.out.println("Данные про источники взяток: " + spies.get(i).getSources());
+            System.out.println();
+        }
 
     }
 }

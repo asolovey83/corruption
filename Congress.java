@@ -1,9 +1,7 @@
-package Demo.Corruption;
+package Demo.Corruption.Version2;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Created by asolo on 5/29/2017.
@@ -15,6 +13,13 @@ public class Congress implements Observable {
     private String methods;
     private String sources;
 
+    public List<Observer> getSpies() {
+        return spies;
+    }
+
+    public void setSpies(List<Observer> spies) {
+        this.spies = spies;
+    }
 
     public String getMethods() {
         return methods;
@@ -42,7 +47,7 @@ public class Congress implements Observable {
 
     public Congress()
     {
-        spies = new LinkedList<Observer>();
+        spies = new ArrayList<Observer>();
     }
 
     @Override
@@ -57,8 +62,20 @@ public class Congress implements Observable {
 
     @Override
     public void notifyObservers() {
-        for (Observer observer : spies)
-            observer.updateState(aquisition, methods, sources);
+        for (Observer observer : spies) {
+            int randomNum = ThreadLocalRandom.current().nextInt(1, 3);
+            switch(randomNum) {
+                case 1:
+                    observer.updateState(aquisition, methods, sources);
+                    break;
+                case 2:
+                    observer.updateState(null, null, null);
+                    break;
+                default:
+                    observer.updateState(null, null, null);
+                    break;
+            }
+        }
     }
 
     public void setData(String aquisition, String methods, String sources) {

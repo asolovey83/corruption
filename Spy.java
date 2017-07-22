@@ -1,4 +1,4 @@
-package Demo.Corruption;
+package Demo.Corruption.Version2;
 
 import java.util.List;
 
@@ -9,6 +9,33 @@ public class Spy implements Observer, Observable {
 
     private Congress congress;
     private Observer comitee;
+    private String aquisition;
+    private String methods;
+    private String sources;
+
+    public String getAquisition() {
+        return aquisition;
+    }
+
+    public void setAquisition(String aquisition) {
+        this.aquisition = aquisition;
+    }
+
+    public String getMethods() {
+        return methods;
+    }
+
+    public void setMethods(String methods) {
+        this.methods = methods;
+    }
+
+    public String getSources() {
+        return sources;
+    }
+
+    public void setSources(String sources) {
+        this.sources = sources;
+    }
 
     public Congress getCongress() {
         return congress;
@@ -32,9 +59,9 @@ public class Spy implements Observer, Observable {
     }
 
     public void updateState(String aquisition, String methods, String sources) {
-        this.congress.setAquisition(aquisition);
-        this.congress.setMethods(methods);
-        this.congress.setSources(sources);
+        this.setAquisition(aquisition);
+        this.setMethods(methods);
+        this.setSources(sources);
     }
 
     @Override
