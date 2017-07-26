@@ -2,6 +2,7 @@ package Demo.Corruption;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
@@ -11,13 +12,25 @@ public class App {
 
     public static void main(String[] args) {
 
+        Scanner in = new Scanner(System.in);
+        System.out.println("Please, enter the number of spies you would like to delegate");
+        int spyNum = in.nextInt();
+
         Congress congress = new Congress();
-        Spy spy = new Spy(congress);
-        Comitee comitee = new Comitee(congress, 10);
-        congress.setData("Аквизиция", "Методы", "Источники");
+        Comitee comitee = new Comitee(congress, spyNum);
+        congress.setData("Activisation", "Methods", "Sources");
         congress.notifyObservers();
-        comitee.updateState(null, null, null);
-        comitee.display();
+        comitee.updateState();
+        System.out.println();
+
+        if (comitee.getSpies().size() < 1)
+        {
+            System.out.println("Unfortunately no spies returned from congress");
+        } else {
+            System.out.println("Unfortunately only " + comitee.getSpies().size() + " spies weren`t revealed. Please, see the data from them:");
+            System.out.println();
+            comitee.display();
+        }
 
 
     }

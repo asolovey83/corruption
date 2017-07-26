@@ -13,6 +13,9 @@ public class Comitee implements Observer {
     public Congress congress;
     int spyNumber;
 
+    public List<Spy> getSpies() {
+        return spies;
+    }
 
     public Comitee (Congress congress, int spyNumber)
     {
@@ -27,12 +30,23 @@ public class Comitee implements Observer {
         }
     }
 
-    @Override
+
+    /**
+     * This is a crutch because I had to implement Observer here, but couldn`t pass any reasonable paramethers when calling the method.
+     * @param aquisition
+     * @param methods
+     * @param sources
+     */
     public void updateState(String aquisition, String methods, String sources)
     {
+        this.updateState();
+    }
+
+
+    public void updateState() {
         int i = 0;
         while (i < congress.getSpies().size()) {
-            spies.add((Spy)congress.getSpies().get(i));
+            spies.add((Spy) congress.getSpies().get(i));
             i++;
         }
     }
